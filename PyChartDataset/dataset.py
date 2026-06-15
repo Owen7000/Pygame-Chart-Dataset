@@ -9,6 +9,14 @@ type Number = int | float
 
 class Dataset:
     def __init__(self, dataset_name:str, max_data_length:int=10) -> None:
+        """__init__ Creates a new instance of Dataset
+
+        Creates a new dataset with a name, a max length, and an internal deque which is empty and has length 0.
+
+        Args:
+            dataset_name (str): The name that can be used to identify this dataset. This should not be changed after initialisation, as it will break the dataset manager
+            max_data_length (int, optional): The maximum number of items the dataset can hold. Defaults to 10.
+        """
         self._dataset_name = dataset_name
         self._max_length = max_data_length
 
@@ -27,6 +35,18 @@ class Dataset:
             list[Number]: The data currently stored in the dataset
         """
         return list(self._data)
+
+    @property
+    def name(self) -> str:
+        """name The name of the dataset
+
+        Used to identify the dataset if you have multiple.
+        This is used by the dataset manager class to access specific datasets
+
+        Returns:
+            str: The name you gave for the dataset
+        """
+        return self._dataset_name
 
     def append(self, value: Number) -> None:
         """append Add 1 piece of data to the set
@@ -61,3 +81,6 @@ class Dataset:
             int: The length of the data deque
         """
         return len(self._data)
+
+    def __repr__(self) -> str:
+        return f"Dataset: {self._dataset_name}. Length: {len(self)}. Data: {self.data}"
