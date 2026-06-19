@@ -1,3 +1,5 @@
+"""A dataset is simply a double ended queue that acts as a fixed size list. You can add as many items as you want/need, however once you reach the maximum size, the first item in the list is removed when you add a new one"""
+
 __author__ = "Owen Plimer"
 __version__ = "0.1.0"
 
